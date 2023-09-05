@@ -347,7 +347,241 @@
 
 
 
-//
+
+
+
+//AJAX (asynchorous javascirpt and xml):WITHOUT SENDING REQUESTS THE WEBSITE AUTOMATICALLY GETS THE RELATED INFORMATION(MATCHING ) TO THE WEBSITE USING JAVASCRIPT.
+
+//API: MEANS application programming interface, gets the data from the servers or database to webpage in the form of JSON.
+//now-a-days all languages(java,ruby,phython) prefer AJAJ(asynchorous javascirpt and json)
+
+
+//CONVERT JAVASCRIPT TO JSON: we use JSON.stringify() method.
+//CONVERT JSON TO JAVASCRIPT : we use JSON.parse() method.
+
+
+
+//FETCH API: to overcome the disadvantage(didn't of accept promises)s of XHR(xml headear response) we use fetch api(because uses of promises in fetch) in async funcitons. 
+
+//Using on Promise Funciton:--
+// fetch("https://swapi.dev/api/people/1/")
+// .then((res) =>
+// {
+//     console.log("resolved",res);
+//     return res.json();
+// })
+// .then((data) =>
+// {
+//     console.log(data);
+// })
+// .catch((e) =>
+// {
+//     console.log("error",e);
+// });
+
+
+//Using Async fuctions:---
+// const loadStarWarsPeople = async () =>
+// {
+//     try{
+//         const res = await fetch("https://swapi.dev/api/people/1/");
+//         const data = await res.json();
+//         console.log(data);
+//         const res2 = await fetch("https://swapi.dev/api/people/2/");
+//         const data2 = await res2.json();
+//         console.log(data2);
+//     }
+//     catch (e)
+//     {
+//         console.log("error!!", e);
+//     }
+// };
+
+// loadStarWarsPeople();
+
+
+
+
+
+//AXIOS: it is a inbuilt library ,that is used for purly on HTTP REQUEST:
+
+// const loadStarWarsPeople = async(id) =>//not working having some errors.only problem is axios url present int axios.html.
+// {
+//     try 
+//     {
+//         const res = await axios.get(`https://swapi.dev/api/people/${id}/`);
+//         console.log(res.data);
+//     }
+//     catch(e)
+//     {
+//         console.log("error",e)
+//     }
+// };
+// loadStarWarsPeople(5);
+
+
+
+//-------------------------------------------------
+
+//PROTOTYPES AND OOPS CONCEPTS:
+//PROTOTYPE:it is template objects(bunch of objects).the prototypes has a lot of methods to access.
+//EX: array has lot of methods like push,pop.etc...,
+
+
+//CONSTRUCTOR FUCTIONS: to reduce length of code from factory fuctions,we use constructor function.in this we add prototype of an funtion.
+//RGB(RED GREEN BLUE ),RGBA(RED GREEN BLUE ALPHA):it is used to change the opacity(from bright color to low i.e,transparency) of the color
+//HEX(HEXA):it can convert  form of rgb color to another form .ex:rgb(255,20,25) to #234522 .
+
+// function Color(r, g, b)
+// {
+//     this.r =r;
+//     this.g = g;
+//     this.b = b;
+// }
+
+// Color.prototype.rgb = function()
+// {
+//     const {r, g, b} = this;
+//     return `rgb(${r}, ${g},${b})`;
+// };
+
+// Color.prototype.hex = function()
+// {
+//     const {r, g, b}= this;//"this" refers color1 and color2
+//     return '#' + ((1 << 24) + ( r << 16 )+ (g << 8) +b).toString(16).slice(1);//this logic is pasted for google
+// };
+
+// Color.prototype.rgba = function(a = 1.0)
+// {
+//     const {r, g, b}= this;//"this" refers color1 and color2
+//     return `rgba(${r}, ${g}, ${b}, ${a})`;
+// };
+
+// const color1 = new Color(40,25,60);
+// const color2 = new Color(0,0,0);
+
+
+
+
+//JAVASCRIPT CLASSES:when we declare class and can also create a constructor in class(because it runs faster to execute).
+
+// class Color
+// {
+//     constructor(r, g, b, name)
+//     {
+//         this.r = r;
+//         this.g = g;
+//         this.b = b;
+//         this.name = name;
+//     }
+//     innerRGB()
+//     {
+//         const {r, g ,b} = this;
+//         return `rgb(${r}, ${g},${b})`;
+//     }
+//     rgb()
+//     {
+//         return `rgb(${this.innerRGB()})`;
+//     }
+//     rgba(a = 1.0)
+//     {
+//         return `rgba(${this.innerRGB()},${a})`;
+//     }
+//     hex()
+//     {
+//         const {r,g,b} = this;
+//         return ('#' + ((1 << 24) + ( r << 16 )+ (g << 8) +b).toString(16).slice(1));
+//     };
+// }
+
+// const red = new Color(255, 67, 89, 'tomato');
+// const white = new Color(255, 255, 255, 'white');
+
+
+
+
+//EXTENDS AND SUPER KEYWORDS IN CLASSES:
+//EXTENDS:we use extends in inheritance,imports the classes from the parent class through extends keyword.
+
+// class Pet
+//  {
+//     constructor (name,age)
+//     {
+//         this.name = name;
+//         this.age =age;
+//     }
+//     eat()
+//     {
+//         return `${this.name} is eating`;
+//     }
+//  }
+
+// class Cat extends Pet
+// {
+//     meow()
+//     {
+//         return 'meow!!'
+//     }
+// }
+
+// class Dog extends Pet
+//  {
+//     bark()
+//     {
+//          return "woof";
+//     }
+//  }
+
+
+
+//SUPER:we use super in inheritance,imports the classes from the parent class through super keyword.
+
+// class Pet
+//  {
+//     constructor (name,age)
+//     {
+//         this.name = name;
+//         this.age =age;
+//     }
+//     eat()
+//     {
+//         return `${this.name} is eating`;
+//     }
+//  }
+
+// class Cat extends Pet
+// {
+//     constructor(name,age,livesleft =9)
+//     {
+//         super(name,age)
+//         this.livesleft=livesleft;
+//     }
+//     meow()
+//     {
+//         return 'meow!!'
+//     }
+// }
+
+// class Dog extends Pet
+//  {
+//     bark()
+//     {
+//          return "woof";
+//     }
+//  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
